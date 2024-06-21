@@ -37,14 +37,14 @@ class _FlutterGraphWidgetState extends State<FlutterGraphWidget> {
   }
 
   late GraphComponent graphCpn;
-  Map<String, Widget Function(BuildContext, GraphComponent)>
-      overlayBuilderMap2 = {};
+  Map<String, Widget Function(BuildContext, GraphComponent)> overlayBuilderMap2 = {};
 
   @override
   Widget build(BuildContext context) {
     return GameWidget(
       backgroundBuilder: widget.options?.backgroundBuilder,
       overlayBuilderMap: overlayBuilderMap2,
+      loadingBuilder: widget.options?.backgroundBuilder,
       game: graphCpn = GraphComponent(
         data: widget.data,
         convertor: widget.convertor,

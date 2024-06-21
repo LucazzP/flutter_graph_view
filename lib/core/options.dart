@@ -93,6 +93,8 @@ class Options {
   /// @zh: 取消顶点时的回调
   dynamic Function(Vertex vertex, TapCancelEvent)? onVertexTapCancel;
 
+  dynamic Function(Edge edge, TapUpEvent)? onEdgeTapUp;
+
   /// @en: the graph scale range. default to `Vector2(0.05, 5)`
   ///
   /// @zh: 图缩放范围

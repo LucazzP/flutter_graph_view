@@ -82,6 +82,9 @@ class RandomAlgorithmDemo extends StatelessWidget {
         ..useLegend = true // default true
         ..edgePanelBuilder = edgePanelBuilder
         ..vertexPanelBuilder = vertexPanelBuilder
+        ..backgroundBuilder = (context) {
+          return Container(color: Colors.white);
+        }
         ..edgeShape = EdgeLineShape() // default is EdgeLineShape.
         ..vertexShape = VertexCircleShape(), // default is VertexCircleShape.
     );
@@ -127,8 +130,7 @@ class RandomAlgorithmDemo extends StatelessWidget {
                 title: Text(
                   'Id: ${hoverVertex.id}',
                 ),
-                subtitle: Text(
-                    'Tag: ${hoverVertex.data['tag']}\nDegree: ${hoverVertex.degree}'),
+                subtitle: Text('Tag: ${hoverVertex.data['tag']}\nDegree: ${hoverVertex.degree}'),
               ),
             ),
           ),

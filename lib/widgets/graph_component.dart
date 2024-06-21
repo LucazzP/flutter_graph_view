@@ -94,7 +94,7 @@ class GraphComponent extends FlameGame
   }
 
   _addEdge(Edge edge) {
-    var ec = EdgeComponent(edge, graph, context)..scaleNotifier = scale;
+    var ec = EdgeComponent(edge, graph, context, this)..scaleNotifier = scale;
     if (edge.cpn == null) {
       edge.cpn = ec;
       world.add(ec);

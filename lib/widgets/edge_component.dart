@@ -22,8 +22,9 @@ class EdgeComponent extends ShapeComponent
   late ValueNotifier<double> scaleNotifier;
   Graph graph;
   BuildContext context;
+  GraphComponent? graphComponent;
 
-  EdgeComponent(this.edge, this.graph, this.context)
+  EdgeComponent(this.edge, this.graph, this.context, this.graphComponent)
       : super(
           position: edge.start.position,
           anchor: Anchor.centerLeft,
@@ -48,6 +49,21 @@ class EdgeComponent extends ShapeComponent
     loadOverlay();
     return super.onLoad();
   }
+
+  @override
+  void onTapUp(TapUpEvent event) {
+    var graphData = gameRef.options.onEdgeTapUp?.call(edge, event);
+    _refresh(graphData);
+    event.handled = true;
+  }
+  
+  void _refresh(graphData) {
+    if (graphData != null) {
+      // refresh data
+      graphComponent?.refreshData(graphData);
+    }
+  }
+
 
   void loadOverlay() {
     var panelBuilder = gameRef.options.edgePanelBuilder;
