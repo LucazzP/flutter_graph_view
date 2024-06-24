@@ -65,6 +65,8 @@ class Options {
   BackgroundBuilder backgroundBuilder = (context) => Container(
         color: Colors.black54,
       );
+  
+  Color legendColor = Colors.white;
 
   GraphStyle graphStyle = GraphStyle();
 

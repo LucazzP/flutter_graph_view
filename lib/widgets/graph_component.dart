@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graph_view/flutter_graph_view.dart';
 
@@ -152,8 +153,8 @@ class GraphComponent extends FlameGame
   }
 
   void clampZoom() {
-    camera.viewfinder.zoom = camera.viewfinder.zoom
-        .clamp(options.scaleRange.x, options.scaleRange.y);
+    camera.viewfinder.zoom =
+        camera.viewfinder.zoom.clamp(options.scaleRange.x, options.scaleRange.y);
   }
 
   static const zoomPerScrollUnit = -0.05;
@@ -177,8 +178,8 @@ class GraphComponent extends FlameGame
   }
 
   /// ![](https://gitee.com/graph-cn/flutter_graph_view/raw/main/lib/widgets/GraphComponent_scale_explain.jpg)
-  void keepMousePosition(PointerScrollInfo info, Vector2 opg, double zoomDelta,
-      Viewfinder vf, double oz) {
+  void keepMousePosition(
+      PointerScrollInfo info, Vector2 opg, double zoomDelta, Viewfinder vf, double oz) {
     var wp = info.eventPosition.widget;
     var wpg = wp - opg;
     var wpgDelta = wpg * zoomDelta;
@@ -203,10 +204,25 @@ class GraphComponent extends FlameGame
         ),
       );
 
-      add(TextComponent(text: tag, position: Vector2(40 + 40, 44.0 + 30 * i)));
+      add(TextComponent(
+        text: tag,
+        position: Vector2(40 + 40, 44.0 + 30 * i),
+        textRenderer: LegentTextRenderer(options.legendColor),
+      ));
 
       legendCount = i;
     }
     print(legendCount);
+  }
+}
+
+class LegentTextRenderer extends TextRenderer {
+  final Color color;
+
+  LegentTextRenderer(this.color);
+
+  @override
+  InlineTextElement format(String text) {
+    return TextPainterTextElement(TextPainter());
   }
 }
