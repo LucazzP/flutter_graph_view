@@ -207,22 +207,11 @@ class GraphComponent extends FlameGame
       add(TextComponent(
         text: tag,
         position: Vector2(40 + 40, 44.0 + 30 * i),
-        textRenderer: LegentTextRenderer(options.legendColor),
+        textRenderer: TextPaint(style: TextStyle(color: options.legendColor)),
       ));
 
       legendCount = i;
     }
-    print(legendCount);
   }
 }
 
-class LegentTextRenderer extends TextRenderer {
-  final Color color;
-
-  LegentTextRenderer(this.color);
-
-  @override
-  InlineTextElement format(String text) {
-    return TextPainterTextElement(TextPainter());
-  }
-}
