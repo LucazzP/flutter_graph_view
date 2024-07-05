@@ -27,7 +27,7 @@ class GraphComponent extends FlameGame
   BuildContext context;
   late Options options;
 
-  ValueNotifier<double> scale = ValueNotifier(1);
+  final ValueNotifier<double> scale = ValueNotifier(1);
   // late final CameraComponent cameraComponent;
   int legendCount = 0;
 
@@ -214,4 +214,3 @@ class GraphComponent extends FlameGame
     }
   }
 }
-

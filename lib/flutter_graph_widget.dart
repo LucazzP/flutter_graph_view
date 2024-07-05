@@ -23,19 +23,10 @@ class FlutterGraphWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<FlutterGraphWidget> createState() => _FlutterGraphWidgetState();
+  State<FlutterGraphWidget> createState() => FlutterGraphWidgetState();
 }
 
-class _FlutterGraphWidgetState extends State<FlutterGraphWidget> {
-  addVertex() {}
-
-  addEdge() {}
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class FlutterGraphWidgetState extends State<FlutterGraphWidget> {
   late GraphComponent graphCpn;
   Map<String, Widget Function(BuildContext, GraphComponent)> overlayBuilderMap2 = {};
 
