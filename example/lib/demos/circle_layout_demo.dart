@@ -10,7 +10,8 @@ import 'package:flutter_graph_view/flutter_graph_view.dart';
 class CircleLayoutDemo extends StatelessWidget {
   CircleLayoutDemo({super.key});
 
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  final GlobalKey<FlutterGraphWidgetState> graphKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     var vertexes = <Map>{};
@@ -53,7 +54,7 @@ class CircleLayoutDemo extends StatelessWidget {
       'edges': edges,
     };
     return FlutterGraphWidget(
-      key: navigatorKey,
+      key: graphKey,
       data: data,
       algorithm: CircleLayout(),
       convertor: MapConvertor(),
@@ -127,8 +128,7 @@ class CircleLayoutDemo extends StatelessWidget {
                 title: Text(
                   'Id: ${hoverVertex.id}',
                 ),
-                subtitle: Text(
-                    'Tag: ${hoverVertex.data['tag']}\nDegree: ${hoverVertex.degree}'),
+                subtitle: Text('Tag: ${hoverVertex.data['tag']}\nDegree: ${hoverVertex.degree}'),
               ),
             ),
           ),

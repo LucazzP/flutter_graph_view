@@ -30,6 +30,7 @@ class GraphComponent extends FlameGame
   final ValueNotifier<double> scale = ValueNotifier(1);
   // late final CameraComponent cameraComponent;
   int legendCount = 0;
+  bool enableZoom = true;
 
   GraphComponent({
     required this.data,
@@ -161,6 +162,7 @@ class GraphComponent extends FlameGame
 
   @override
   void onScroll(PointerScrollInfo info) {
+    if (!enableZoom) return;
     var vf = camera.viewfinder;
     var opg = vf.localToGlobal(Vector2.zero());
     var oz = vf.zoom;
