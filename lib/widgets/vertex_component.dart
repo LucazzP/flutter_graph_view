@@ -41,6 +41,7 @@ class VertexComponent extends ShapeComponent
   }) : super(
           position: vertex.position,
           anchor: Anchor.center,
+          priority: 1,
         );
 
   final Map<String, dynamic> properties = {};
@@ -106,8 +107,8 @@ class VertexComponent extends ShapeComponent
     if (hitBox != null) vertexShape.updateHitBox(vertex, hitBox!);
     vertexShape.setPaint(vertex);
 
-    position.x += (vertex.position.x - position.x) * dt * speed;
-    position.y += (vertex.position.y - position.y) * dt * speed;
+    position.x = vertex.position.x;
+    position.y = vertex.position.y;
     if (Util.distance(position, vertex.position) < 1 && !collisionEnable) {
       collisionEnable = true;
     }
@@ -135,11 +136,13 @@ class VertexComponent extends ShapeComponent
     }
   }
 
-  onDrag(DragUpdateInfo e) {
+  @mustCallSuper
+  void onDrag(Vector2 globalDelta) {
     if (hasPanel) {
       gameRef.overlays.remove(overlayName);
       gameRef.overlays.add(overlayName);
     }
+    algorithm.afterDrag(vertex, globalDelta);
   }
 
   @override
