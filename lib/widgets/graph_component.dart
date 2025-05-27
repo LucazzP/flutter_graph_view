@@ -55,7 +55,7 @@ class GraphComponent extends FlameGame
 
   void refreshData(data) {
     // ignore: invalid_use_of_internal_member
-    world.children.clear();
+    // world.children.clear();
     graph = convertor.convertGraph(data);
     graph.vertexes = graph.vertexes.toSet().toList()
       ..sort((key1, key2) => key1.degree - key2.degree > 0 ? -1 : 1);

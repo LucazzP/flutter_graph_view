@@ -27,7 +27,7 @@ class FlutterGraphWidget extends StatefulWidget {
   State<FlutterGraphWidget> createState() => FlutterGraphWidgetState();
 }
 
-class _FlutterGraphWidgetState extends State<FlutterGraphWidget> {
+class FlutterGraphWidgetState extends State<FlutterGraphWidget> {
   addVertex() {}
 
   addEdge() {}
@@ -57,7 +57,7 @@ class _FlutterGraphWidgetState extends State<FlutterGraphWidget> {
             backgroundBuilder: widget.options?.backgroundBuilder,
             overlayBuilderMap: overlayBuilderMap2,
             loadingBuilder: widget.options?.backgroundBuilder,
-      game: graphCpn = GraphComponent(
+            game: graphCpn = GraphComponent(
               data: widget.data,
               convertor: widget.convertor,
               algorithm: widget.algorithm,
@@ -81,9 +81,7 @@ class _FlutterGraphWidgetState extends State<FlutterGraphWidget> {
             } else if (details.pointerCount == 2) {
               graphCpn.onZoom(
                 zoomCenter: center,
-                zoomDelta: scale == null
-                    ? (details.scale - 1)
-                    : (details.scale - scale!),
+                zoomDelta: scale == null ? (details.scale - 1) : (details.scale - scale!),
               );
               scale = details.scale;
             }
